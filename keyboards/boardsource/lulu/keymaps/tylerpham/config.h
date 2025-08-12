@@ -2,7 +2,6 @@
 #pragma once
 
 #define TAPPING_TERM 210
-#define IGNORE_MOD_TAP_INTERRUPT
 #define RETRO_TAPPING
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
