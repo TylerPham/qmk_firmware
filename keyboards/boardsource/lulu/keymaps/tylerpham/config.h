@@ -1,10 +1,10 @@
 
 #pragma once
 
-#define TAPPING_FORCE_HOLD
-#undef TAPPING_TERM
-#define TAPPING_TERM 240
+#define TAPPING_TERM 210
+#define IGNORE_MOD_TAP_INTERRUPT
 #define RETRO_TAPPING
+#define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
 
 // QMK firmware size reduction settings
