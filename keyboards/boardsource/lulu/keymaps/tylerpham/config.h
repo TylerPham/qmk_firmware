@@ -7,6 +7,8 @@
 #define RETRO_TAPPING
 #define QUICK_TAP_TERM 0
 
+#define ENABLE_COMPILE_KEYCODE
+
 // QMK firmware size reduction settings
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
