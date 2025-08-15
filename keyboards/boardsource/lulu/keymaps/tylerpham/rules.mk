@@ -7,3 +7,6 @@ MUSIC_ENABLE = no
 # OS Detection for automatic Control/GUI swapping
 OS_DETECTION_ENABLE = yes
 DEFERRED_EXEC_ENABLE = yes
+
+# Caps Word - activated by pressing both shifts simultaneously
+CAPS_WORD_ENABLE = yes

@@ -12,6 +12,9 @@
 #define OS_DETECTION_DEBOUNCE 200
 #define OS_DETECTION_KEYBOARD_RESET
 
+// Caps Word configuration
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
 // QMK firmware size reduction settings
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE

@@ -12,6 +12,10 @@
 // The keyboard automatically detects the OS and swaps the modifiers accordingly.
 // Manual toggle available: Lower+Raise → Q key (CG_TOGG) for manual override.
 //
+// Caps Word: Press both shift keys simultaneously to activate Caps Word.
+// While active, letters are capitalized and '-' becomes '_'. 
+// Caps Word automatically turns off after typing a space or punctuation.
+//
 #define HM_A     LGUI_T(KC_A)
 #define HM_S     LALT_T(KC_S)
 #define HM_D     LSFT_T(KC_D)
