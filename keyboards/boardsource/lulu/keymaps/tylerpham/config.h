@@ -8,6 +8,10 @@
 #define QUICK_TAP_TERM 0
 #define ENABLE_COMPILE_KEYCODE
 
+// OS Detection configuration
+#define OS_DETECTION_DEBOUNCE 200
+#define OS_DETECTION_KEYBOARD_RESET
+
 // QMK firmware size reduction settings
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE

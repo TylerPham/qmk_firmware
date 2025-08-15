@@ -3,3 +3,7 @@ CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
 MUSIC_ENABLE = no
+
+# OS Detection for automatic Control/GUI swapping
+OS_DETECTION_ENABLE = yes
+DEFERRED_EXEC_ENABLE = yes

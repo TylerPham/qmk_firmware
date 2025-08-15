@@ -4,8 +4,14 @@
 #include QMK_KEYBOARD_H
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Homerow mods
+// Homerow mods with automatic OS-specific Control/GUI swapping
 // ─────────────────────────────────────────────────────────────────────────────
+// Windows/Linux (automatic): F=CTRL, J=CTRL, A=CMD, ;=CMD
+// macOS/iOS (automatic):     F=CMD,  J=CMD,  A=CTRL, ;=CTRL
+// 
+// The keyboard automatically detects the OS and swaps the modifiers accordingly.
+// Manual toggle available: Lower+Raise → Q key (CG_TOGG) for manual override.
+//
 #define HM_A     LGUI_T(KC_A)
 #define HM_S     LALT_T(KC_S)
 #define HM_D     LSFT_T(KC_D)
@@ -99,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * | MAKE |BOOTLDR|   `   |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |CG_TOG|      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
@@ -113,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT(
     QK_MAKE, QK_BOOTLOADER, KC_GRV, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                _______, _______, _______, _______, _______, _______, _______, _______
@@ -127,3 +133,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// OS Detection - Automatic Control/GUI swapping
+// ─────────────────────────────────────────────────────────────────────────────
+#ifdef OS_DETECTION_ENABLE
+uint32_t check_os_and_swap_mods(uint32_t trigger_time, void *cb_arg) {
+    os_variant_t detected_os = detected_host_os();
+    
+    switch (detected_os) {
+        case OS_MACOS:
+        case OS_IOS:
+            // macOS detected - swap Control/GUI so F=CMD, J=CMD, A=CTRL, ;=CTRL
+            keymap_config.swap_lctl_lgui = true;
+            keymap_config.swap_rctl_rgui = true;
+            return 0; // Detection complete, don't retry
+            
+        case OS_WINDOWS:
+        case OS_LINUX:
+            // Windows/Linux detected - keep default F=CTRL, J=CTRL, A=CMD, ;=CMD
+            keymap_config.swap_lctl_lgui = false;
+            keymap_config.swap_rctl_rgui = false;
+            return 0; // Detection complete, don't retry
+            
+        case OS_UNSURE:
+            return 500; // OS not yet detected, retry in 500ms
+    }
+    
+    return 0;
+}
+
+void keyboard_post_init_user(void) {
+    // Start OS detection after 200ms to allow USB initialization
+    defer_exec(200, check_os_and_swap_mods, NULL);
+}
+#endif
