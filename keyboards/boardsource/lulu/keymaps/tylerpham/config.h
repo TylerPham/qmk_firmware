@@ -15,6 +15,10 @@
 // Caps Word configuration
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
+// Space Cadet configuration - custom brackets instead of parentheses
+#define LSPO_KEYS KC_LSFT, KC_TRNS, KC_LBRC  // Left shift held = shift, tapped = [
+#define RSPC_KEYS KC_RSFT, KC_TRNS, KC_RBRC  // Right shift held = shift, tapped = ]
+
 // QMK firmware size reduction settings
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
