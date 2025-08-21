@@ -13,3 +13,6 @@ CAPS_WORD_ENABLE = yes
 
 # Space Cadet - custom bracket shifts
 SPACE_CADET_ENABLE = yes
+
+# Combos for cut/copy/paste shortcuts
+COMBO_ENABLE = yes

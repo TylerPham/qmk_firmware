@@ -42,6 +42,27 @@ enum layers {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Combos
+// ─────────────────────────────────────────────────────────────────────────────
+enum combo_events {
+    ZX_CUT,
+    XC_COPY,
+    CV_PASTE,
+};
+
+const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+
+combo_t key_combos[] = {
+    [ZX_CUT] = COMBO(zx_combo, C(KC_X)),
+    [XC_COPY] = COMBO(xc_combo, C(KC_C)),
+    [CV_PASTE] = COMBO(cv_combo, C(KC_V)),
+};
+
+uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Keymaps
 // ─────────────────────────────────────────────────────────────────────────────
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
