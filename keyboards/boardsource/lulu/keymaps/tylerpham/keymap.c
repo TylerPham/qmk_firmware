@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  [    |    |   ]   |------+------+------+------+------+------|
  * |Shift |  Z   |  X   |  C   |  V   |  B   |-------|    |-------|  N   |  M   |  ,   |  .   |  /   |Shift |
  * `-----------------------------------------/       /     \     \-----------------------------------------'
- *                  | LAlt |Lower/Esc|Bspc  | / Del  /        \Enter\  |Space |Raise/Tab| RGUI |
+ *                  | LAlt |Lower/Esc|Bspc  | / Del  /        \Enter\  |Space |Raise/Tab| BSLS |
  *                  |      |         |      |/       /          \     \ |      |         |      |
  *                  `-----------------------'         '-------------------------'
  */
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_GRV,
     KC_ESC,   HM_A,    HM_S,    HM_D,    HM_F,    KC_G,                       KC_H,    HM_J,    HM_K,    HM_L,    HM_SCLN, KC_QUOT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                               KC_LALT,  LT(_LOWER, KC_ESC), KC_BSPC, KC_DEL,  KC_ENT, KC_SPC,  LT(_RAISE, KC_TAB), KC_RGUI
+                               KC_LALT,  LT(_LOWER, KC_ESC), KC_BSPC, KC_DEL,  KC_ENT, KC_SPC,  LT(_RAISE, KC_TAB), KC_BSLS
 ),
 
 /* LOWER
