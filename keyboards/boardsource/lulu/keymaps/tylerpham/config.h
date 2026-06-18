@@ -1,9 +1,9 @@
 
 #pragma once
 
-#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 210
 #define PERMISSIVE_HOLD
+#define HOLD_ON_OTHER_KEY_PRESS
 #define RETRO_TAPPING
 #define QUICK_TAP_TERM 0
 #define ENABLE_COMPILE_KEYCODE
