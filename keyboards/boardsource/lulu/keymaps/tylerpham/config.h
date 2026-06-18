@@ -3,8 +3,8 @@
 
 #define TAPPING_TERM 210
 #define PERMISSIVE_HOLD
-#define HOLD_ON_OTHER_KEY_PRESS
-#define RETRO_TAPPING
+#define CHORDAL_HOLD
+#define FLOW_TAP_TERM 150
 #define QUICK_TAP_TERM 0
 #define ENABLE_COMPILE_KEYCODE
 
@@ -14,6 +14,9 @@
 
 // Caps Word configuration
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+// Combo configuration
+#define COMBO_TERM 50
 
 
 // QMK firmware size reduction settings

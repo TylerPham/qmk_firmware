@@ -24,7 +24,7 @@
 
 #define HM_J     RCTL_T(KC_J)
 #define HM_K     RSFT_T(KC_K)
-#define HM_L     LALT_T(KC_L)
+#define HM_L     RALT_T(KC_L)
 #define HM_SCLN  RGUI_T(KC_SCLN)
 
 // ─────────────────────────────────────────────────────────────────────────────
